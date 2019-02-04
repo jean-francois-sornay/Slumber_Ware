@@ -59,6 +59,7 @@ namespace Slumber_Ware
         {
             if (instance == null) // si c'est le premier lancement alors le premier screen est le menu de base
             {
+                dimensions = new Vector2(720,480);
                 currentScreen = new GameScreen(); //A FAIRE !!!!!!!!
             }
         }
