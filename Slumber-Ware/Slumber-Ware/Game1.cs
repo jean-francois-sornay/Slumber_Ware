@@ -26,8 +26,10 @@ namespace Slumber_Ware
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
+            graphics.PreferredBackBufferWidth = (int)ScreenManager.Instance.dimensions.X; // la longueur de la fenêtre est = au dimension sur X de ScreenManager.Instance.dimensions
+            graphics.PreferredBackBufferHeight = (int)ScreenManager.Instance.dimensions.Y; // la hauteur de la fenêtre est = au dimension sur Y de ScreenManager.Instance.dimensions
+            graphics.ApplyChanges(); // on applique les changements
+            IsMouseVisible = true; // variable disant que la souris est visible quand elle passe dans la fenetre créer par le jeu
             base.Initialize();
         }
 
@@ -37,10 +39,10 @@ namespace Slumber_Ware
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
+            spriteBatch = new SpriteBatch(GraphicsDevice); // créer un spritebatch ce qui permet de draw les images
+            ScreenManager.Instance.GraphicsDevice = GraphicsDevice; // Le graphicsdevice de screenmanager est le meme que celui ci
+            ScreenManager.Instance.spriteBatch = spriteBatch; // Le spriteBatch de screenmanager est le meme que celui ci
+            ScreenManager.Instance.LoadContent(Content); // load le content de screenmanager
         }
 
         /// <summary>
@@ -49,7 +51,7 @@ namespace Slumber_Ware
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            ScreenManager.Instance.UnloadContent(); // unload le content de screenmanager
         }
 
         /// <summary>
@@ -59,11 +61,18 @@ namespace Slumber_Ware
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape)) // si on appuie sur la touche espace alors on quitte le jeu
+            { Exit(); }
 
-            // TODO: Add your update logic here
-
+            if (ScreenManager.Instance.size == true) // si screenmanager size == true alors c'est qu'on doit changer la taille
+            {
+                ScreenManager.Instance.size = false; // la taille a bien changé
+                graphics.PreferredBackBufferWidth = (int)ScreenManager.Instance.dimensions.X; // on met la taille demandé en longueur
+                graphics.PreferredBackBufferHeight = (int)ScreenManager.Instance.dimensions.Y; // on met la taille demandé en hauteur
+                graphics.ApplyChanges(); // on applique les changements
+                ScreenManager.Instance.ChangeScreens(ScreenManager.Instance.nameLevel, 0, true); // pour que cela ne bug pas on est obligé de relancer la classe 
+            }
+            ScreenManager.Instance.Update(gameTime); // update tout ce qu'il y a dans ScreenManager.Instance.Update
             base.Update(gameTime);
         }
 
@@ -73,10 +82,10 @@ namespace Slumber_Ware
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
-
+            GraphicsDevice.Clear(Color.Black); // nettoie l'arrière plan en noir
+            spriteBatch.Begin(); // commence à draw
+            ScreenManager.Instance.Draw(spriteBatch); // draw tout ce qu'il y a dans ScreenManager.Instance.Daw
+            spriteBatch.End(); // fini de draw
             base.Draw(gameTime);
         }
     }
