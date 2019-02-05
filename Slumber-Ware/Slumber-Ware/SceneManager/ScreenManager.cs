@@ -37,9 +37,6 @@ namespace Slumber_Ware
         public SpriteBatch spriteBatch { get { return SpriteBatch; } set { SpriteBatch = value; } }
         private SpriteBatch SpriteBatch; // spritebatch = a celui dans game1
 
-        private float Volume = 0.01f; // variable du volume de tout ce qui est audio
-        public float volume { get { return Volume; } set { Volume = value; } }
-
         private string NameLevel; // string permettant de savoir dans quelle screen l'utilisateur se trouve actuellement 
         public string nameLevel { get { return NameLevel; } set { NameLevel = value; } }
 
@@ -60,7 +57,7 @@ namespace Slumber_Ware
             if (instance == null) // si c'est le premier lancement alors le premier screen est le menu de base
             {
                 dimensions = new Vector2(720,480);
-                currentScreen = new Scene_de_base(); //A FAIRE !!!!!!!!
+                currentScreen = new Menu(); //A FAIRE !!!!!!!!
             }
         }
 

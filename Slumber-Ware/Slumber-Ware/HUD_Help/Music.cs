@@ -20,13 +20,14 @@ public class Music
 
     private int getSongIndex(Song music)
     {
-        if (playlist.Exists(music))
+        /*if (playlist.Exists(music))
         {
             return playlist.FindIndex(music);
         } else
         {
             return -1;
-        }
+        }*/
+        return -1;
     }
 
     public void addSong(Song music)

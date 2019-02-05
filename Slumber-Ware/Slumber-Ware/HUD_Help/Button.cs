@@ -22,9 +22,8 @@ namespace Slumber_Ware
         //Constructeur de la classe button
         public Button(ContentManager content, string name)
         {
-            image = content.Load<Texture2D>(name);
-            //GERER LE RECTANGLE ICI ET PAS EN DEHORS
-            clicked = false;
+            this.Image = content.Load<Texture2D>(name);
+            this.clicked = false;
         }
 
         //Update
