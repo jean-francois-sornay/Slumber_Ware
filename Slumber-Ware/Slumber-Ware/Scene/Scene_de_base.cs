@@ -31,11 +31,16 @@ namespace Slumber_Ware
 
         public override void Update(GameTime gameTime)
         {
-                base.Update(gameTime);
+            if (Keyboard.GetState().IsKeyDown(Keys.Z))
+            {
+                ScreenManager.Instance.ChangeScreens("ScèneTest");
+            }
+            base.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            ScreenManager.Instance.GraphicsDevice.Clear(Color.Red);
             base.Draw(spriteBatch);
         }
     }

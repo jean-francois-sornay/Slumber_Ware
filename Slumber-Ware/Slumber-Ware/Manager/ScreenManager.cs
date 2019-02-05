@@ -60,7 +60,7 @@ namespace Slumber_Ware
             if (instance == null) // si c'est le premier lancement alors le premier screen est le menu de base
             {
                 dimensions = new Vector2(720,480);
-                currentScreen = new GameScreen(); //A FAIRE !!!!!!!!
+                currentScreen = new Scene_de_base(); //A FAIRE !!!!!!!!
             }
         }
 
@@ -85,30 +85,12 @@ namespace Slumber_Ware
             currentScreen.Draw(spriteBatch); // draw le current screen
         }
 
-
-        public void ChangeScreens(string screenname, int _nbrlevel, bool gagner) // fonction permettant de changer de screen
+        public void ChangeScreens(string screenname) // fonction permettant de changer de screen
         {
-
             currentScreen.UnloadContent(); // on unload le current screen
-            newScreen = (GameScreen)Activator.CreateInstance(Type.GetType("R1TS." + screenname)); // on créer une nouvelle instance pour le screen que l'on veut obtenir
+            newScreen = (GameScreen)Activator.CreateInstance(Type.GetType("Slumber_Ware." + screenname)); // on créer une nouvelle instance pour le screen que l'on veut obtenir
             currentScreen = newScreen; // on balance l'instance crée dans currentscreen pour que ce soit cette instance qui soit le currentscreen
             currentScreen.LoadContent(); // on load le current screen
-        }
-        public void Changetaillescreen(string screenname, bool manualchange, Vector2 dim, int _nbrlevel) // fonction permettant de changer de screen et de changer la taille de l'ecran
-        {
-            nameLevel = screenname; // on change le nom du screen pour correspondre à celui qui va prendre la place
-            /*if (manualchange == true) { dimensions = dim; nbrlevel = _nbrlevel; dimensions5 = dim; } // si le changement est manuel (vient des options) alors on change de dimensions et on l'enregistre dans dimensions 5 et on donne le niveau souhaité
-            else // sinon
-            {
-                nbrlevel = _nbrlevel; // on prend le level demandé
-                if (screenname == "Menu_Base") { Dimensions = dimensions5; } // si le screen demandé est menu de base alors les dimensions de l'écran sont celle que l'utilisateur a enregistré
-                else // sinon
-                {
-                    if (difficulty == "Normal") { Dimensions = Dimensions3; } // si la difficulté est réglé sur normal les dimensions de l'écran = dimension3
-                    if (difficulty == "Hard") { Dimensions = Dimensions4; } // si la difficulté est réglé sur hard les dimensions de l'écran = dimension4
-                }
-            }
-            size = true; // size = true donc la classe game1 va effectué le changement de taille et de screen*/
         }
     }
 }

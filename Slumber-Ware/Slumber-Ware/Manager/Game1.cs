@@ -63,15 +63,6 @@ namespace Slumber_Ware
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Escape)) // si on appuie sur la touche espace alors on quitte le jeu
             { Exit(); }
-
-            if (ScreenManager.Instance.size == true) // si screenmanager size == true alors c'est qu'on doit changer la taille
-            {
-                ScreenManager.Instance.size = false; // la taille a bien changé
-                graphics.PreferredBackBufferWidth = (int)ScreenManager.Instance.dimensions.X; // on met la taille demandé en longueur
-                graphics.PreferredBackBufferHeight = (int)ScreenManager.Instance.dimensions.Y; // on met la taille demandé en hauteur
-                graphics.ApplyChanges(); // on applique les changements
-                ScreenManager.Instance.ChangeScreens(ScreenManager.Instance.nameLevel, 0, true); // pour que cela ne bug pas on est obligé de relancer la classe 
-            }
             ScreenManager.Instance.Update(gameTime); // update tout ce qu'il y a dans ScreenManager.Instance.Update
             base.Update(gameTime);
         }
