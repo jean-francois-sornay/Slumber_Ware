@@ -24,7 +24,7 @@ namespace Slumber_Ware
             base.LoadContent();
             //on load toutes les images et les classes nécessaires
             boutonTest = new Button(content, "BackToMenu");
-            boutonTest.PosSize = (new Rectangle((int)ScreenManager.Instance.dimensions.X / 2 - boutonTest.image.Width / 2, 
+            boutonTest.posSize = (new Rectangle((int)ScreenManager.Instance.dimensions.X / 2 - boutonTest.image.Width / 2, 
                 (int)(ScreenManager.Instance.dimensions.Y *2/9), boutonTest.image.Width, (int)(ScreenManager.Instance.dimensions.Y / 15)));
 
         }

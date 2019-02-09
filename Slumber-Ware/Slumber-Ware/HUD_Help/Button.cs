@@ -10,19 +10,19 @@ namespace Slumber_Ware
 {
     public class Button
     {
-        Rectangle posSize; // Rectangle définnissant la zone de l'image clickable
-        public Rectangle PosSize { get { return posSize; } set { posSize = value; } }
+        // Rectangle définnissant la zone de l'image clickable
+        public Rectangle posSize;
 
-        bool clicked; // variable permettant de savoir si la souris est dans la zone clickable ou pas grace à la fonction update
-        public bool Clicked { get { return clicked; } set { clicked = value; } }
+        // variable permettant de savoir si la souris est dans la zone clickable ou pas grace à la fonction update
+        public bool clicked;
 
-        private Texture2D Image; // variable stockant l'image en texture2D
-        public Texture2D image { get { return Image; } set { Image = value; } }
+        // variable stockant l'image en texture2D
+        public Texture2D image;
 
         //Constructeur de la classe button
         public Button(ContentManager content, string name)
         {
-            this.Image = content.Load<Texture2D>(name);
+            this.image = content.Load<Texture2D>(name);
             this.clicked = false;
         }
 
