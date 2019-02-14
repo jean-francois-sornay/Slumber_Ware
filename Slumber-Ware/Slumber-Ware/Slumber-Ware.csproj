@@ -57,6 +57,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="HUD_Help\Button.cs" />
+    <Compile Include="Save\Save.cs" />
+    <Compile Include="Save\StructurePerso.cs" />
     <Compile Include="SceneManager\Game1.cs" />
     <Compile Include="HUD_Help\Music.cs" />
     <Compile Include="Scene\GameScreen.cs" />

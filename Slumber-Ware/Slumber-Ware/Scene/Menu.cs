@@ -26,7 +26,6 @@ namespace Slumber_Ware
             boutonTest = new Button(content, "BackToMenu");
             boutonTest.posSize = (new Rectangle((int)ScreenManager.Instance.dimensions.X / 2 - boutonTest.image.Width / 2, 
                 (int)(ScreenManager.Instance.dimensions.Y *2/9), boutonTest.image.Width, (int)(ScreenManager.Instance.dimensions.Y / 15)));
-
         }
 
         public override void UnloadContent() // on unload tous ce que l'on a load
