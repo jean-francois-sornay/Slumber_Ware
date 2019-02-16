@@ -56,7 +56,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Armure.cs" />
+    <Compile Include="Player\Armure.cs" />
     <Compile Include="Player\Arme.cs" />
     <Compile Include="Player\Competence.cs" />
     <Compile Include="HUD_Help\Button.cs" />
